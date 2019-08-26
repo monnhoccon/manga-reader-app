@@ -36,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static int selectedIndex = 0;
 
-  Future<http.Response> fetchPost() async {
+  Future<Map> fetchPost() async {
     final url = 'https://kitsu.io/api/edge/anime?filter[text]=naruto';
     final response = await http.get(url);
     // return data;
@@ -47,6 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON.
       final data = json.decode(response.body);
+
+      print(data);
 
       return data;
       // return Post.fromJson(json.decode(response.body));
